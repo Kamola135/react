@@ -1,4 +1,7 @@
 import React from "react";
+import AppHeader from "../components/AppHeader";
+import AppLabel from "../components/AppLabel";
+import AppButton from "../components/AppButton";
 
 const StepOne = () => {
   return (
@@ -20,8 +23,18 @@ const StepOne = () => {
             </div>
           </div>
           <div className="question">
-            <h2>1. Занимательный вопрос</h2>
-            <label className="input-wrapper">
+            <AppHeader headerText="1. Занимательный вопрос" headerType="h2"/>
+            {/* <h2>1. Занимательный вопрос</h2> */}
+            <AppLabel 
+              LabelText="" 
+              isRequired={true} 
+              inputType="text" 
+              id="answer" 
+              inputPlaceHolder="Ваш ответ" 
+              hasError={true} 
+              errorText="Введите номер в правильном формате"
+            />
+            {/* <label className="input-wrapper">
               <input
                 required
                 type="text"
@@ -31,10 +44,11 @@ const StepOne = () => {
               <span id="error-message">
                 Введите номер в правильном формате например
               </span>
-            </label>
-            <button type="button" disabled id="next-btn">
+            </label> */}
+            <AppButton buttonText="Далее" buttonType="button" />
+            {/* <button type="button" disabled id="next-btn">
               Далее
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

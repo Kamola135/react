@@ -1,13 +1,19 @@
 import React from "react";
+import AppHeader from "../components/AppHeader";
+import AppLabel from "../components/AppLabel";
+import AppButton from "../components/appButtom";
 
 const Welcome = () => {
   return (
     <div className="container">
       <div className="wrapper">
         <div className="welcome">
-          <h1>Добро пожаловать в квиз от лучшего учебного центра</h1>
+          <AppHeader headerType="h1" headerText="Добро пожаловать в квиз от лучшего учебного центра"/>
+          {/* <h1>Добро пожаловать в квиз от лучшего учебного центра</h1> */}
           <form className="welcome__form">
-            <label className="input-wrapper" htmlFor="username">
+            <AppLabel LabelText="Ваше имя" isRequired={true} inputType="text" id="id" inputPlaceHolder="Ваш ответ" hasError={true} errorText="Введите имя в правильном формате"/>
+
+           {/*} <label className="input-wrapper" htmlFor="username">
               Ваше имя
               <input
                 required
@@ -19,8 +25,9 @@ const Welcome = () => {
               <span id="error-message">
                 Введите номер в правильном формате например
               </span>
-            </label>
-            <label className="input-wrapper" htmlFor="username">
+            </label>*/}
+           <AppLabel LabelText="Ваш номер" isRequired={true} inputType="tel" id="id" inputPlaceHolder="+998 9- --- -- --" hasError={true} errorText="Введите номер в правильном формате"/>
+           {/*} <label className="input-wrapper" htmlFor="username">
               Ваш номер
               <input
                 required
@@ -31,10 +38,11 @@ const Welcome = () => {
                 pattern="^(?:\+998)?(?:\d{2})?(?:\d{7})$"
               />
               <span id="error-message">Введите номер в правильном формате</span>
-            </label>
-            <button disabled type="submit" id="next-btn">
+            </label> */}
+            <AppButton buttonText="Далее" buttonType="submit" isDisabled={true}/>
+           {/* <button disabled type="submit" id="next-btn">
               Далее
-            </button>
+            </button>*/}
           </form>
         </div>
       </div>
