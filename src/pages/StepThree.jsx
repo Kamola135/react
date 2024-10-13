@@ -1,37 +1,27 @@
 import React, { useState } from "react";
 import AppHeader from "../components/AppHeader";
 import AppButton from "../components/AppButton";
+import { progressBar } from "../components/progressbar";
+import { useNavigate } from "react-router-dom";
 
 const StepThree = () => {
   const [selectedVariant, setSelectedVariant] = useState(null);
+  const navigate = useNavigate();
+
   const handleVariantChange = (event) => {
     setSelectedVariant(event.target.value);
   };
 
-  const isButtonDisabled = selectedVariant === null;
+  const goToNextPage = () => {
+    navigate("/step-four");
+  };
 
   return (
     <div className="container">
       <div className="wrapper">
         <div className="emoji-quiz">
-          <AppHeader
-            headerType="h2"
-            headerText="3. Занимательный вопрос"
-          />
-          <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description">
-                Скидка за прохождение опроса:
-              </span>
-              <span className="indicator__value">15%</span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1 _active"></div>
-              <div className="indicator__unit indicator__unit-2 _active"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div>
+          <AppHeader headerType="h2" headerText="3. Занимательный вопрос" />
+          <progressBar currentStep={3} />
           <ul className="emoji-variants">
             {[1, 2, 3, 4].map((variant) => (
               <li className="variant-wrapper" key={variant}>
@@ -51,10 +41,9 @@ const StepThree = () => {
             ))}
           </ul>
           <AppButton
+            isDisabled={selectedVariant === null}
             buttonText="Далее"
-            isDisabled={isButtonDisabled}
-            buttonClick={() => {
-            }}
+            buttonClick={goToNextPage}
           />
         </div>
       </div>

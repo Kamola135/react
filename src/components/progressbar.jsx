@@ -1,6 +1,7 @@
 import React from "react";
 
-export const progressBar = ({}) => {
+export const progressBar = ({ currentStep }) => {
+  const variants= [1, 2, 3, 4];
     return( 
         <div className="indicator">
             <div className="indicator__text">
@@ -10,10 +11,9 @@ export const progressBar = ({}) => {
               <span className="indicator__value">15%</span>
             </div>
             <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1 _active"></div>
-              <div className="indicator__unit indicator__unit-2"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
+              {variants.map((elem, idx)=>(
+                <div key={idx} className={`indicator_unit indicator_unit-1 ${currentStep>idx && "_active"} `}></div>
+              ))}
             </div>
           </div>
     );

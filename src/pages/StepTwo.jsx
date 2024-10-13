@@ -1,10 +1,18 @@
+import React, { useState } from "react";
 import Header from "../components/AppHeader";
 import AnswerLabel from "../components/AnswerLabel";
 import AppButton from "../components/AppButton";
-import React, { useState } from 'react';
+import { progressBar } from "../components/progressbar";
+import { useNavigate } from "react-router-dom";
 
 const StepTwo = () => {
-  const [course, setCourse] = useState(null); 
+  const [course, setCourse] = useState(null);
+  const navigate = useNavigate();
+
+  const goToNextPage = () => {
+    navigate("/step-three");
+  };
+
   const variants = [
     { id: "variant-1", courseName: "Frontend" },
     { id: "variant-2", courseName: "Python" },
@@ -16,7 +24,7 @@ const StepTwo = () => {
     <div className="container">
       <div className="wrapper">
         <div className="variants-quiz">
-          <progressBar />
+          <progressBar currentStep={2} />
           <div className="question">
             <Header headerType="h2" headerText="Какой курс вас интересует?" />
             <ul className="variants">
@@ -29,7 +37,11 @@ const StepTwo = () => {
                 />
               ))}
             </ul>
-            {!course ? <AppButton isDisabled /> : <AppButton isDisabled={false} />}
+            <AppButton
+              isDisabled={!course}
+              buttonText="Далее"
+              buttonClick={goToNextPage}
+            />
           </div>
         </div>
       </div>

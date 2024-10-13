@@ -1,11 +1,11 @@
 import React from "react";
 
-const AppButton = ({ 
-  buttonText, 
-  buttonType, 
-  isDisabled, 
+const AppButton = ({
+  buttonText,
+  buttonType,
+  isDisabled,
   buttonClick,
- }) => {
+}) => {
   return (
     <button
       disabled={isDisabled}
@@ -17,4 +17,5 @@ const AppButton = ({
     </button>
   );
 };
+
 export default AppButton;
